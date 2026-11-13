@@ -17,13 +17,14 @@ class Settings(BaseSettings):
     # Server & CORS
     HOST: str = "0.0.0.0"
     PORT: int = 8000
+
     CORS_ORIGINS: Union[List[str], str] = [
-        "http://localhost:3000",
-        "http://localhost:8501",
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:8501",
-        "https://*.vercel.app"
-    ]
+    "http://localhost:3000",
+    "http://localhost:8501",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:8501",
+    "https://zyro-hr-assistant.vercel.app"
+]
     
     # Groq LLM
     GROQ_API_KEY: str = Field(default="", description="Groq API key")
