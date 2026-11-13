@@ -17,7 +17,7 @@ services:
       - key: GROQ_FALLBACK_MODEL
         value: llama-3.1-8b-instant
       - key: CORS_ORIGINS
-        value: https://zyro-hr-assistant.vercel.app,http://localhost:3000,http://localhost:8501
+        value: https://zyro-hr-backend.onrender.com
       - key: EMBEDDING_MODEL_NAME
         value: sentence-transformers/all-MiniLM-L6-v2
       - key: FAISS_INDEX_DIR

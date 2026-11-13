@@ -1,6 +1,10 @@
 import { ChatRequest, ChatResponse, HealthResponse } from '@/types/chat';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+// Default to production Render backend URL if environment variable is not defined
+const RAW_API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://zyro-hr-backend.onrender.com';
+
+// Ensure no trailing slash
+export const API_BASE_URL = RAW_API_URL.replace(/\/+$/, '');
 
 export async function sendChatMessage(request: ChatRequest): Promise<ChatResponse> {
   const response = await fetch(`${API_BASE_URL}/chat`, {
@@ -30,4 +34,3 @@ export async function fetchHealth(): Promise<HealthResponse> {
 
   return response.json();
 }
-

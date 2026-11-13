@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Message, SourceCitation, Conversation, HealthResponse } from '@/types/chat';
-import { sendChatMessage, fetchHealth } from '@/lib/api';
+import { sendChatMessage, fetchHealth, API_BASE_URL } from '@/lib/api';
 
 const STORAGE_KEY_MESSAGES = 'zyro_hr_messages';
 const STORAGE_KEY_CONVOS = 'zyro_hr_conversations';
@@ -99,7 +99,7 @@ export function useChat() {
       const errorMessage: Message = {
         id: `error-${Date.now()}`,
         role: 'assistant',
-        content: `Error: ${errorMsg}. Please ensure the backend server is running on http://localhost:8000.`,
+        content: `Error: ${errorMsg}. Please ensure the backend server is reachable at ${API_BASE_URL}.`,
         isRefusal: true,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
