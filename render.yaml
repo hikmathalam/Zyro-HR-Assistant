@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: zyro-hr-backend
+    env: python
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: GROQ_FALLBACK_MODEL
+        value: llama-3.1-8b-instant
+      - key: CORS_ORIGINS
+        value: https://zyro-hr-assistant.vercel.app,http://localhost:3000,http://localhost:8501
+      - key: EMBEDDING_MODEL_NAME
+        value: sentence-transformers/all-MiniLM-L6-v2
+      - key: FAISS_INDEX_DIR
+        value: data/hr_faiss_index
+      - key: RETRIEVER_K
+        value: "4"
+      - key: RETRIEVER_FETCH_K
+        value: "12"
+      - key: RETRIEVER_LAMBDA_MULT
+        value: "0.5"
+      - key: ADMIN_API_KEY
+        generateValue: true
